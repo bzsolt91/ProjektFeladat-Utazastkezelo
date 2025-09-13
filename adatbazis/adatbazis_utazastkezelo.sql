@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `cim`;
 CREATE TABLE `cim` (
   `cim_id` int NOT NULL AUTO_INCREMENT,
   `utas_id` int NOT NULL,
-  `email_cim` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
-  `lakcim` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
+  `email_cim` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `lakcim` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   PRIMARY KEY (`cim_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -50,13 +50,13 @@ DROP TABLE IF EXISTS `elofoglalas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `elofoglalas` (
   `elofoglalas_id` int NOT NULL AUTO_INCREMENT,
-  `teljes_nev` varchar(100) COLLATE utf16_hungarian_ci NOT NULL,
-  `telefon` varchar(20) COLLATE utf16_hungarian_ci NOT NULL,
-  `email` varchar(100) COLLATE utf16_hungarian_ci NOT NULL,
-  `lakcim` varchar(255) COLLATE utf16_hungarian_ci NOT NULL,
+  `teljes_nev` varchar(100) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `telefon` varchar(20) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `lakcim` varchar(255) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   `regisztracio_idopont` datetime NOT NULL,
   `utazas_id` int NOT NULL,
-  `allapot` enum('érdeklődik','foglalva','lemondva') COLLATE utf16_hungarian_ci NOT NULL,
+  `allapot` enum('érdeklődik','foglalva','lemondva') CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   PRIMARY KEY (`elofoglalas_id`),
   KEY `utazas_id` (`utazas_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
@@ -81,8 +81,8 @@ DROP TABLE IF EXISTS `felhasznalok`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `felhasznalok` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `felhasznalonev` varchar(50) COLLATE utf8mb3_hungarian_ci NOT NULL,
-  `jelszo` varchar(64) COLLATE utf8mb3_hungarian_ci NOT NULL,
+  `felhasznalonev` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci NOT NULL,
+  `jelszo` varchar(64) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci NOT NULL,
   `jogosultsag` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
@@ -109,7 +109,7 @@ CREATE TABLE `fizetes` (
   `fizetes_id` int NOT NULL AUTO_INCREMENT,
   `utas_id` int NOT NULL,
   `befizetett_osszeg` int NOT NULL,
-  `biztositas` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
+  `biztositas` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   PRIMARY KEY (`fizetes_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -133,8 +133,8 @@ DROP TABLE IF EXISTS `lejarati_ertesitesek`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lejarati_ertesitesek` (
   `utas_id` int DEFAULT NULL,
-  `utas_nev` varchar(255) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
-  `okmany_tipus` varchar(255) COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `utas_nev` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
+  `okmany_tipus` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_hungarian_ci DEFAULT NULL,
   `okmany_lejarat` date DEFAULT NULL,
   `ertesites_datuma` datetime DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_hungarian_ci;
@@ -175,7 +175,7 @@ DROP TABLE IF EXISTS `megjegyzes`;
 CREATE TABLE `megjegyzes` (
   `megjegyzes_id` int NOT NULL AUTO_INCREMENT,
   `utas_id` int NOT NULL,
-  `megjegyzes` varchar(255) COLLATE utf16_hungarian_ci NOT NULL,
+  `megjegyzes` varchar(255) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   PRIMARY KEY (`megjegyzes_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=117 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -200,9 +200,9 @@ DROP TABLE IF EXISTS `szemelyi`;
 CREATE TABLE `szemelyi` (
   `szemelyi_id` int NOT NULL AUTO_INCREMENT,
   `utas_id` int NOT NULL,
-  `szemelyi_vagy_utlevel` varchar(50) COLLATE utf16_hungarian_ci NOT NULL,
+  `szemelyi_vagy_utlevel` varchar(50) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   `okmany_lejarat` date NOT NULL,
-  `allampolgarsag` varchar(50) COLLATE utf16_hungarian_ci NOT NULL DEFAULT 'magyar',
+  `allampolgarsag` varchar(50) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL DEFAULT 'magyar',
   PRIMARY KEY (`szemelyi_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -227,7 +227,7 @@ DROP TABLE IF EXISTS `telefon`;
 CREATE TABLE `telefon` (
   `telefon_id` int NOT NULL AUTO_INCREMENT,
   `utas_id` int NOT NULL,
-  `telefon` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
+  `telefon` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   PRIMARY KEY (`telefon_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=285 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -251,10 +251,10 @@ DROP TABLE IF EXISTS `utas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utas` (
   `utas_id` int NOT NULL AUTO_INCREMENT,
-  `titulus` varchar(50) COLLATE utf16_hungarian_ci NOT NULL,
-  `vezeteknev` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
-  `keresztnev1` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
-  `keresztnev2` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
+  `titulus` varchar(50) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `vezeteknev` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `keresztnev1` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `keresztnev2` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   `szuletesi_datum` date NOT NULL,
   PRIMARY KEY (`utas_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=201 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
@@ -266,7 +266,7 @@ CREATE TABLE `utas` (
 
 LOCK TABLES `utas` WRITE;
 /*!40000 ALTER TABLE `utas` DISABLE KEYS */;
-INSERT INTO `utas` VALUES (1,'Mrs.','Schäfer','Clara','','0000-00-00'),(2,'','Horváth','András','','0000-00-00'),(3,'','Vass','Júlia','','0000-00-00'),(4,'','Molnár','Dániel','','0000-00-00'),(5,'Mrs.','Petit','Emma','','0000-00-00'),(6,'','Tóth','Kata','','0000-00-00'),(7,'','Papp','Gábor','','0000-00-00'),(8,'Ms.','Woźniak','Filip','','0000-00-00'),(9,'','Benei','László','','0000-00-00'),(10,'Mrs.','Novák','Jakub','','0000-00-00'),(11,'Mrs.','Ferrari','Luca','Aurora','0000-00-00'),(12,'Mrs.','Meyer','Hannah','Lea','0000-00-00'),(13,'Mrs.','Huber','Sebastian','Florian','0000-00-00'),(14,'Mr.','Bauer','Julia','','0000-00-00'),(15,'','Barta','Levente','','0000-00-00'),(16,'Mr.','Kučera','Martin','','0000-00-00'),(17,'','Benei','Gábor','','0000-00-00'),(18,'Mrs.','Greco','Francesca','Giorgia','0000-00-00'),(19,'','Szabó','Tamás','','0000-00-00'),(20,'','Kiss','Emese','','0000-00-00'),(21,'Mrs.','Schmidt','Lina','','0000-00-00'),(22,'','Szabó','Gábor','','0000-00-00'),(23,'Mr.','Moser','Tobias','Katharina','0000-00-00'),(24,'Mr.','Esposito','Camilla','','0000-00-00'),(25,'','Vass','Gábor','','0000-00-00'),(26,'','Németh','Réka','','0000-00-00'),(27,'','Horváth','Zsófia','','0000-00-00'),(28,'','Szalai','Eszter','','0000-00-00'),(29,'','Barta','László','','0000-00-00'),(30,'','Barta','Bence','','0000-00-00'),(31,'','Tóth','Levente','','0000-00-00'),(32,'','Tóth','Lili','','0000-00-00'),(33,'','Kiss','Levente','','0000-00-00'),(34,'Dr.','Vass','Lili','','0000-00-00'),(35,'Mrs.','Kowalski','Jakub','Jan','0000-00-00'),(36,'Mrs.','Moreau','Jules','','0000-00-00'),(37,'Dr.','Kiss','Lili','','0000-00-00'),(38,'Mrs.','Durand','Lucas','','0000-00-00'),(39,'','Papp','Viktória','','0000-00-00'),(40,'','Tóth','Gábor','','0000-00-00'),(41,'Mr.','Hofer','Hannah','','0000-00-00'),(42,'Mr.','Nagy','Peter','Laura','0000-00-00'),(43,'','Barta','Bence','','0000-00-00'),(44,'','Kiss','Zsófia','','0000-00-00'),(45,'','Molnár','Dorina','','0000-00-00'),(46,'Ms.','Richard','Adam','','0000-00-00'),(47,'','Papp','Máté','','0000-00-00'),(48,'','Horváth','Anna','','0000-00-00'),(49,'','Balogh','Viktória','','0000-00-00'),(50,'','Kovács','Levente','','0000-00-00'),(51,'','Takács','Kata','','0000-00-00'),(52,'','Molnár','Kata','','0000-00-00'),(53,'','Tóth','Zoltán','','0000-00-00'),(54,'','Kiss','Péter','','0000-00-00'),(55,'Ms.','Martin','Raphaël','','0000-00-00'),(56,'Mr.','Schmidt','Finn','','0000-00-00'),(57,'','Tóth','Attila','','0000-00-00'),(58,'','Barta','Zoltán','','0000-00-00'),(59,'Ms.','Weber','Milan','','0000-00-00'),(60,'','Molnár','Petra','','0000-00-00'),(61,'','Balogh','Réka','','0000-00-00'),(62,'','Barta','László','','0000-00-00'),(63,'Mrs.','Bernard','Hugo','Louis','0000-00-00'),(64,'Mr.','Novák','Marek','','0000-00-00'),(65,'','Farkas','Zsófia','','0000-00-00'),(66,'Dr.','Varga','Júlia','','0000-00-00'),(67,'Mr.','Moser','David','Katharina','0000-00-00'),(68,'','Farkas','Zsófia','','0000-00-00'),(69,'','Németh','Emese','','0000-00-00'),(70,'Ms.','Kamiński','Julia','','0000-00-00'),(71,'','Takács','Bence','','0000-00-00'),(72,'','Benei','Péter','','0000-00-00'),(73,'','Szabó','Attila','','0000-00-00'),(74,'','Barta','Máté','','0000-00-00'),(75,'Dr.','Vass','Emese','','0000-00-00'),(76,'Mr.','Robert','Alice','','0000-00-00'),(77,'Mr.','Szabó','Zuzana','','0000-00-00'),(78,'','Horváth','Bence','','0000-00-00'),(79,'Dr.','Vass','Viktória','','0000-00-00'),(80,'','Juhász','Réka','','0000-00-00'),(81,'','Farkas','Réka','','0000-00-00'),(82,'','Juhász','Dániel','','0000-00-00'),(83,'','Papp','Eszter','','0000-00-00'),(84,'','Szalai','Eszter','','0000-00-00'),(85,'','Farkas','Dorina','','0000-00-00'),(86,'','Takács','Réka','','0000-00-00'),(87,'','Juhász','László','','0000-00-00'),(88,'','Farkas','András','','0000-00-00'),(89,'Mrs.','Zieliński','Michał','','0000-00-00'),(90,'','Benei','Máté','','0000-00-00'),(91,'','Benei','Bence','','0000-00-00'),(92,'Mr.','Molnár','Viktória','','0000-00-00'),(93,'','Tóth','Dorina','','0000-00-00'),(94,'','Tóth','Noémi','','0000-00-00'),(95,'Ms.','Wiśniewski','Julia','Hanna','0000-00-00'),(96,'Ms.','Schäfer','Lea','','0000-00-00'),(97,'','Horváth','Gábor','','0000-00-00'),(98,'Mrs.','Kiss','Tomáš','','0000-00-00'),(99,'','Németh','Bence','','0000-00-00'),(100,'','Juhász','Attila','','0000-00-00'),(101,'Mrs.','Rossi','Andrea','Sara','0000-00-00'),(102,'','Szabó','Zsófia','','0000-00-00'),(103,'','Molnár','Bence','','0000-00-00'),(104,'','Papp','Levente','','0000-00-00'),(105,'Ms.','Fischer','Lina','','0000-00-00'),(106,'Mrs.','Wiśniewski','Antoni','','0000-00-00'),(107,'','Vass','Levente','','0000-00-00'),(108,'Mr.','Szymański','Maja','Natalia','0000-00-00'),(109,'Mrs.','Varga','Michal','','0000-00-00'),(110,'','Tóth','Réka','','0000-00-00'),(111,'','Benei','Anna','','0000-00-00'),(112,'Mr.','Novák','Matej','Matej','0000-00-00'),(113,'','Kiss','Dániel','','0000-00-00'),(114,'','Varga','Bence','','0000-00-00'),(115,'','Nagy','Zoltán','','0000-00-00'),(116,'Dr.','Kiss','Gábor','','0000-00-00'),(117,'','Farkas','Bence','','0000-00-00'),(118,'Ms.','Kučera','Petr','Julie','0000-00-00'),(119,'','Juhász','Dorina','','0000-00-00'),(120,'Dr.','Farkas','Dániel','','0000-00-00'),(121,'','Kovács','András','','0000-00-00'),(122,'Mr.','Němec','Veronika','','0000-00-00'),(123,'','Molnár','Zsófia','','0000-00-00'),(124,'','Takács','Emese','','0000-00-00'),(125,'','Szabó','Júlia','','0000-00-00'),(126,'','Vass','Dániel','','0000-00-00'),(127,'','Molnár','Dorina','','0000-00-00'),(128,'','Takács','Kata','','0000-00-00'),(129,'','Papp','Júlia','','0000-00-00'),(130,'Mr.','Kováč','Zuzana','','0000-00-00'),(131,'','Nagy','Dániel','','0000-00-00'),(132,'','Juhász','András','','0000-00-00'),(133,'','Kiss','Kata','','0000-00-00'),(134,'','Kovács','Réka','','0000-00-00'),(135,'','Takács','Petra','','0000-00-00'),(136,'Mrs.','Wagner','Nina','','0000-00-00'),(137,'Mrs.','Kováč','Laura','','0000-00-00'),(138,'','Vass','Anna','','0000-00-00'),(139,'','Papp','Petra','','0000-00-00'),(140,'','Molnár','Máté','','0000-00-00'),(141,'Mr.','Mayer','Laura','','0000-00-00'),(142,'','Vass','Zoltán','','0000-00-00'),(143,'Mrs.','Bernard','Alice','Lina','0000-00-00'),(144,'Dr.','Benei','Zoltán','','0000-00-00'),(145,'Mrs.','Meyer','Sophia','','0000-00-00'),(146,'','Juhász','András','','0000-00-00'),(147,'Ms.','Moser','Laura','','0000-00-00'),(148,'','Varga','László','','0000-00-00'),(149,'','Tóth','Gábor','','0000-00-00'),(150,'Mr.','Schneider','Lena','Paul','0000-00-00'),(151,'','Szalai','Zsófia','','0000-00-00'),(152,'','Farkas','Eszter','','0000-00-00'),(153,'Mrs.','Esposito','Francesca','','0000-00-00'),(154,'Ms.','Steiner','Laura','Anna','0000-00-00'),(155,'Mr.','Durand','Rose','','0000-00-00'),(156,'','Barta','Péter','','0000-00-00'),(157,'','Papp','Lili','','0000-00-00'),(158,'','Németh','Péter','','0000-00-00'),(159,'Mrs.','Bauer','Julia','','0000-00-00'),(160,'','Szabó','Viktória','','0000-00-00'),(161,'Mrs.','Nowak','Aleksander','Zuzanna','0000-00-00'),(162,'Mrs.','Novotný','David','','0000-00-00'),(163,'','Szabó','Levente','','0000-00-00'),(164,'','Molnár','András','','0000-00-00'),(165,'Mr.','Kováč','Jakub','','0000-00-00'),(166,'','Németh','Máté','','0000-00-00'),(167,'Dr.','Balogh','Bence','','0000-00-00'),(168,'Mr.','Becker','Jonas','Marie','0000-00-00'),(169,'','Szalai','Júlia','','0000-00-00'),(170,'Mr.','Greco','Chiara','','0000-00-00'),(171,'','Vass','Dániel','','0000-00-00'),(172,'Ms.','Fischer','Niklas','Hannah','0000-00-00'),(173,'','Farkas','Lili','','0000-00-00'),(174,'','Németh','Máté','','0000-00-00'),(175,'','Németh','Emese','','0000-00-00'),(176,'Ms.','Kamiński','Michał','','0000-00-00'),(177,'','Szabó','Péter','','0000-00-00'),(178,'Ms.','Horváth','Michal','Lucia','0000-00-00'),(179,'','Molnár','Zoltán','','0000-00-00'),(180,'','Varga','Péter','','0000-00-00'),(181,'Mr.','Zieliński','Wojciech','Amelia','0000-00-00'),(182,'Mr.','Leroy','Raphaël','','0000-00-00'),(183,'','Nagy','Péter','','0000-00-00'),(184,'','Nagy','Júlia','','0000-00-00'),(185,'Mr.','Rossi','Matteo','','0000-00-00'),(186,'Mr.','Baláž','Peter','Natália','0000-00-00'),(187,'','Farkas','Kata','','0000-00-00'),(188,'','Kiss','Péter','','0000-00-00'),(189,'Ms.','Petit','Jade','','0000-00-00'),(190,'Dr.','Nagy','Ádám','','0000-00-00'),(191,'','Nagy','Máté','','0000-00-00'),(192,'','Benei','Péter','','0000-00-00'),(193,'','Barta','Júlia','','0000-00-00'),(194,'Mr.','Schneider','Lukas','Finn','0000-00-00'),(195,'Mrs.','Marino','Luca','','0000-00-00'),(196,'','Nagy','Petra','','0000-00-00'),(197,'','Balogh','András','','0000-00-00'),(198,'','Horváth','Zsófia','','0000-00-00'),(199,'','Takács','Levente','','0000-00-00'),(200,'','Horváth','Dániel','','0000-00-00');
+INSERT INTO `utas` VALUES (1,'Mrs.','Schäfer','Clara','','2009-12-02'),(2,'','Horváth','András','','2001-04-29'),(3,'','Vass','Júlia','','1966-11-13'),(4,'','Molnár','Dániel','','2000-05-10'),(5,'Mrs.','Petit','Emma','','1971-03-08'),(6,'','Tóth','Kata','','1964-11-02'),(7,'','Papp','Gábor','','1960-08-26'),(8,'Ms.','Woźniak','Filip','','1958-09-26'),(9,'','Benei','László','','1961-09-23'),(10,'Mrs.','Novák','Jakub','','1982-06-07'),(11,'Mrs.','Ferrari','Luca','Aurora','1956-12-22'),(12,'Mrs.','Meyer','Hannah','Lea','2007-07-29'),(13,'Mrs.','Huber','Sebastian','Florian','1976-12-12'),(14,'Mr.','Bauer','Julia','','1972-01-07'),(15,'','Barta','Levente','','1979-03-30'),(16,'Mr.','Kučera','Martin','','1970-02-25'),(17,'','Benei','Gábor','','1963-01-15'),(18,'Mrs.','Greco','Francesca','Giorgia','1954-09-26'),(19,'','Szabó','Tamás','','1994-07-25'),(20,'','Kiss','Emese','','1978-08-09'),(21,'Mrs.','Schmidt','Lina','','1959-05-02'),(22,'','Szabó','Gábor','','1970-11-06'),(23,'Mr.','Moser','Tobias','Katharina','1966-03-30'),(24,'Mr.','Esposito','Camilla','','1968-08-31'),(25,'','Vass','Gábor','','1994-08-10'),(26,'','Németh','Réka','','1997-01-15'),(27,'','Horváth','Zsófia','','1991-05-17'),(28,'','Szalai','Eszter','','1955-10-01'),(29,'','Barta','László','','1974-08-16'),(30,'','Barta','Bence','','1995-11-15'),(31,'','Tóth','Levente','','1985-06-26'),(32,'','Tóth','Lili','','1989-10-20'),(33,'','Kiss','Levente','','1982-07-25'),(34,'Dr.','Vass','Lili','','1993-05-28'),(35,'Mrs.','Kowalski','Jakub','Jan','2009-05-02'),(36,'Mrs.','Moreau','Jules','','1996-06-17'),(37,'Dr.','Kiss','Lili','','2004-04-19'),(38,'Mrs.','Durand','Lucas','','1962-02-11'),(39,'','Papp','Viktória','','1967-09-02'),(40,'','Tóth','Gábor','','2002-01-02'),(41,'Mr.','Hofer','Hannah','','1977-01-05'),(42,'Mr.','Nagy','Peter','Laura','1989-01-22'),(43,'','Barta','Bence','','2004-04-01'),(44,'','Kiss','Zsófia','','1984-01-29'),(45,'','Molnár','Dorina','','1957-08-17'),(46,'Ms.','Richard','Adam','','2005-11-27'),(47,'','Papp','Máté','','1966-08-24'),(48,'','Horváth','Anna','','1985-07-07'),(49,'','Balogh','Viktória','','1957-08-19'),(50,'','Kovács','Levente','','2001-08-16'),(51,'','Takács','Kata','','2005-03-20'),(52,'','Molnár','Kata','','1951-03-16'),(53,'','Tóth','Zoltán','','1970-05-18'),(54,'','Kiss','Péter','','1988-04-09'),(55,'Ms.','Martin','Raphaël','','1960-03-21'),(56,'Mr.','Schmidt','Finn','','2006-04-16'),(57,'','Tóth','Attila','','1960-10-15'),(58,'','Barta','Zoltán','','1955-01-27'),(59,'Ms.','Weber','Milan','','2002-12-31'),(60,'','Molnár','Petra','','1959-10-12'),(61,'','Balogh','Réka','','1959-11-23'),(62,'','Barta','László','','1970-02-17'),(63,'Mrs.','Bernard','Hugo','Louis','1960-12-20'),(64,'Mr.','Novák','Marek','','2004-06-15'),(65,'','Farkas','Zsófia','','2009-05-16'),(66,'Dr.','Varga','Júlia','','1963-06-29'),(67,'Mr.','Moser','David','Katharina','1959-05-03'),(68,'','Farkas','Zsófia','','1956-03-14'),(69,'','Németh','Emese','','1952-12-30'),(70,'Ms.','Kamiński','Julia','','2006-05-23'),(71,'','Takács','Bence','','1982-12-15'),(72,'','Benei','Péter','','2005-08-09'),(73,'','Szabó','Attila','','2009-02-27'),(74,'','Barta','Máté','','1958-12-22'),(75,'Dr.','Vass','Emese','','1997-05-26'),(76,'Mr.','Robert','Alice','','1980-01-29'),(77,'Mr.','Szabó','Zuzana','','1958-03-09'),(78,'','Horváth','Bence','','1960-09-08'),(79,'Dr.','Vass','Viktória','','1978-11-21'),(80,'','Juhász','Réka','','2002-05-18'),(81,'','Farkas','Réka','','2005-03-22'),(82,'','Juhász','Dániel','','2008-12-24'),(83,'','Papp','Eszter','','1959-03-25'),(84,'','Szalai','Eszter','','1999-03-18'),(85,'','Farkas','Dorina','','1988-05-09'),(86,'','Takács','Réka','','1994-02-23'),(87,'','Juhász','László','','1995-09-04'),(88,'','Farkas','András','','1985-12-04'),(89,'Mrs.','Zieliński','Michał','','1992-08-07'),(90,'','Benei','Máté','','1995-03-26'),(91,'','Benei','Bence','','1988-05-07'),(92,'Mr.','Molnár','Viktória','','2006-01-18'),(93,'','Tóth','Dorina','','1995-03-14'),(94,'','Tóth','Noémi','','2007-11-06'),(95,'Ms.','Wiśniewski','Julia','Hanna','1983-08-23'),(96,'Ms.','Schäfer','Lea','','2004-09-01'),(97,'','Horváth','Gábor','','2002-05-30'),(98,'Mrs.','Kiss','Tomáš','','1988-01-20'),(99,'','Németh','Bence','','1983-01-09'),(100,'','Juhász','Attila','','2000-12-18'),(101,'Mrs.','Rossi','Andrea','Sara','1985-09-30'),(102,'','Szabó','Zsófia','','1975-11-05'),(103,'','Molnár','Bence','','1971-12-24'),(104,'','Papp','Levente','','1982-05-12'),(105,'Ms.','Fischer','Lina','','1985-11-12'),(106,'Mrs.','Wiśniewski','Antoni','','1972-04-01'),(107,'','Vass','Levente','','1953-08-24'),(108,'Mr.','Szymański','Maja','Natalia','1961-06-26'),(109,'Mrs.','Varga','Michal','','1996-06-25'),(110,'','Tóth','Réka','','1967-12-18'),(111,'','Benei','Anna','','1960-05-11'),(112,'Mr.','Novák','Matej','Matej','2007-11-28'),(113,'','Kiss','Dániel','','1968-06-18'),(114,'','Varga','Bence','','1988-08-02'),(115,'','Nagy','Zoltán','','1967-07-18'),(116,'Dr.','Kiss','Gábor','','1981-12-15'),(117,'','Farkas','Bence','','1997-02-22'),(118,'Ms.','Kučera','Petr','Julie','1969-11-11'),(119,'','Juhász','Dorina','','1967-11-16'),(120,'Dr.','Farkas','Dániel','','1979-10-14'),(121,'','Kovács','András','','1985-04-20'),(122,'Mr.','Němec','Veronika','','1977-02-22'),(123,'','Molnár','Zsófia','','1979-10-29'),(124,'','Takács','Emese','','1957-09-11'),(125,'','Szabó','Júlia','','1958-12-28'),(126,'','Vass','Dániel','','1971-11-16'),(127,'','Molnár','Dorina','','1972-05-24'),(128,'','Takács','Kata','','1996-05-10'),(129,'','Papp','Júlia','','1994-08-04'),(130,'Mr.','Kováč','Zuzana','','1973-11-19'),(131,'','Nagy','Dániel','','1995-08-26'),(132,'','Juhász','András','','1986-08-08'),(133,'','Kiss','Kata','','1996-01-19'),(134,'','Kovács','Réka','','1950-06-13'),(135,'','Takács','Petra','','1994-02-01'),(136,'Mrs.','Wagner','Nina','','1989-02-04'),(137,'Mrs.','Kováč','Laura','','1953-03-18'),(138,'','Vass','Anna','','1968-10-09'),(139,'','Papp','Petra','','1974-03-23'),(140,'','Molnár','Máté','','1954-10-19'),(141,'Mr.','Mayer','Laura','','1961-04-28'),(142,'','Vass','Zoltán','','1992-03-23'),(143,'Mrs.','Bernard','Alice','Lina','2007-02-25'),(144,'Dr.','Benei','Zoltán','','1989-01-31'),(145,'Mrs.','Meyer','Sophia','','1973-12-18'),(146,'','Juhász','András','','1952-07-26'),(147,'Ms.','Moser','Laura','','1950-12-10'),(148,'','Varga','László','','2007-01-02'),(149,'','Tóth','Gábor','','1992-03-12'),(150,'Mr.','Schneider','Lena','Paul','1989-12-17'),(151,'','Szalai','Zsófia','','1963-03-22'),(152,'','Farkas','Eszter','','1956-03-20'),(153,'Mrs.','Esposito','Francesca','','2001-06-03'),(154,'Ms.','Steiner','Laura','Anna','2008-06-18'),(155,'Mr.','Durand','Rose','','1968-01-18'),(156,'','Barta','Péter','','1984-11-05'),(157,'','Papp','Lili','','1950-02-04'),(158,'','Németh','Péter','','1965-12-05'),(159,'Mrs.','Bauer','Julia','','1969-05-11'),(160,'','Szabó','Viktória','','1999-01-03'),(161,'Mrs.','Nowak','Aleksander','Zuzanna','1956-12-18'),(162,'Mrs.','Novotný','David','','1957-10-16'),(163,'','Szabó','Levente','','1968-01-24'),(164,'','Molnár','András','','1956-12-11'),(165,'Mr.','Kováč','Jakub','','1990-07-14'),(166,'','Németh','Máté','','1951-11-02'),(167,'Dr.','Balogh','Bence','','1957-07-29'),(168,'Mr.','Becker','Jonas','Marie','1982-05-16'),(169,'','Szalai','Júlia','','1969-02-17'),(170,'Mr.','Greco','Chiara','','2008-07-17'),(171,'','Vass','Dániel','','2005-04-24'),(172,'Ms.','Fischer','Niklas','Hannah','1990-12-09'),(173,'','Farkas','Lili','','1988-10-03'),(174,'','Németh','Máté','','1960-12-17'),(175,'','Németh','Emese','','2008-07-15'),(176,'Ms.','Kamiński','Michał','','1969-10-19'),(177,'','Szabó','Péter','','1993-05-23'),(178,'Ms.','Horváth','Michal','Lucia','1987-07-24'),(179,'','Molnár','Zoltán','','2007-08-16'),(180,'','Varga','Péter','','2005-06-05'),(181,'Mr.','Zieliński','Wojciech','Amelia','1994-04-09'),(182,'Mr.','Leroy','Raphaël','','2005-01-24'),(183,'','Nagy','Péter','','1972-07-09'),(184,'','Nagy','Júlia','','1957-05-27'),(185,'Mr.','Rossi','Matteo','','1979-06-15'),(186,'Mr.','Baláž','Peter','Natália','1955-01-21'),(187,'','Farkas','Kata','','2006-12-03'),(188,'','Kiss','Péter','','1979-06-10'),(189,'Ms.','Petit','Jade','','1986-06-05'),(190,'Dr.','Nagy','Ádám','','1983-10-25'),(191,'','Nagy','Máté','','2009-10-17'),(192,'','Benei','Péter','','1967-07-11'),(193,'','Barta','Júlia','','1978-03-30'),(194,'Mr.','Schneider','Lukas','Finn','1978-08-21'),(195,'Mrs.','Marino','Luca','','2008-06-17'),(196,'','Nagy','Petra','','1976-05-21'),(197,'','Balogh','András','','1966-07-23'),(198,'','Horváth','Zsófia','','1953-08-15'),(199,'','Takács','Levente','','1978-06-08'),(200,'','Horváth','Dániel','','1961-04-22');
 /*!40000 ALTER TABLE `utas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,9 +305,9 @@ DROP TABLE IF EXISTS `utazas`;
 CREATE TABLE `utazas` (
   `utazas_id` int NOT NULL AUTO_INCREMENT,
   `utazas_modja` enum('busz','repulő','hajó','egyéni') CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
-  `utazas_elnevezese` varchar(60) COLLATE utf16_hungarian_ci NOT NULL,
+  `utazas_elnevezese` varchar(60) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   `utazas_ideje` date NOT NULL,
-  `desztinacio` varchar(50) COLLATE utf16_hungarian_ci NOT NULL,
+  `desztinacio` varchar(50) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   PRIMARY KEY (`utazas_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -331,12 +331,12 @@ DROP TABLE IF EXISTS `utazas_reszletek`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `utazas_reszletek` (
   `utazas_id` int NOT NULL,
-  `leiras` text COLLATE utf16_hungarian_ci NOT NULL,
+  `leiras` text CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
   `indulasi_datum` date NOT NULL,
   `visszaindulas_datum` date NOT NULL,
   `ar` int NOT NULL,
-  `indulasi_helyszin` varchar(100) COLLATE utf16_hungarian_ci NOT NULL,
-  `boritokep` varchar(255) COLLATE utf16_hungarian_ci DEFAULT NULL,
+  `indulasi_helyszin` varchar(100) CHARACTER SET utf16 COLLATE utf16_hungarian_ci NOT NULL,
+  `boritokep` varchar(255) CHARACTER SET utf16 COLLATE utf16_hungarian_ci DEFAULT NULL,
   PRIMARY KEY (`utazas_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_hungarian_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -378,4 +378,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-09 13:57:51
+-- Dump completed on 2025-09-13  9:03:26
