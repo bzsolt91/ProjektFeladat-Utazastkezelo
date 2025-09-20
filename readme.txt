@@ -2,7 +2,7 @@
 
 Benei Zsolt – adatbázis tervezése, asztali alkalmazás fejlesztése (C# WinForms, .NET 8, MySQL)
 
-Vukovics Lily – webes felület fejlesztése, vizuális stílus kialakítása, dokumentáció és prezentáció készítése
+Vukovics Lilian – webes felület fejlesztése, vizuális stílus kialakítása, dokumentáció és prezentáció készítése
 
 💻 Szükséges az projekt megtekintéséhez
 
